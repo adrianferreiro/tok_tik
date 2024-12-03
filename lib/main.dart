@@ -12,7 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => DiscoverProvider())],
+      //operador de cascada .. para no volver a escribir el nombre del objeto
+      //..loadNextPage()
+      providers: [
+        ChangeNotifierProvider(
+            lazy: false, create: (_) => DiscoverProvider()..loadNextPage())
+      ],
       child: MaterialApp(
         theme: AppTheme().getTheme(),
         debugShowCheckedModeBanner: false,
